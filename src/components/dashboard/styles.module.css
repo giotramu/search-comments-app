@@ -1,0 +1,42 @@
+.SearchBar {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.SearchButton {
+  min-width: 8rem;
+}
+
+.SearchButtonWithMargin {
+  margin-bottom: 25px;
+}
+
+.List {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ListPlaceholder {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  text-align: center;
+}
+
+.PostList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.PostTitle {
+  margin-bottom: 0;
+}
+
+.PostAuthor {
+  font-size: .875rem;
+  color: hsl(var(--muted-foreground));
+  text-transform: lowercase;
+}

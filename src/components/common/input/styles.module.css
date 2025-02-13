@@ -1,0 +1,63 @@
+.FormGroup {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .25rem;
+}
+
+.FormGroupWithField,
+.FormGroupWithCheckbox {
+  display: flex;
+  gap: .25rem;
+}
+
+.FormGroupWithField {
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.FormGroupWithCheckbox {
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.RequiredSign {
+  color: hsl(var(--destructive));
+}
+
+.Label {
+  font-size: .875rem;
+}
+
+.Field {
+  width: 100%;
+  height: 2.25rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius) - 2px);
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: .15s;
+  box-shadow: var(--shadow);
+
+  @media (min-width: 768px) {
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+}
+
+.FieldError {
+  font-size: .875rem;
+  color: hsl(var(--destructive));
+}
+
+.FieldHint {
+  font-size: .875rem;
+  color: hsl(var(--muted-foreground));
+}

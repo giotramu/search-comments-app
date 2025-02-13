@@ -1,0 +1,187 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "defaultBranch": "stable",
+    "useIgnoreFile": false
+  },
+
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": []
+  },
+
+  "organizeImports": {
+    "enabled": true
+  },
+
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+
+      "a11y": {
+        "noBlankTarget": {
+          "level": "error",
+          "options": {
+            "allowDomains": ["example.com", "example.org"]
+          }
+        },
+        "noLabelWithoutControl": "error",
+        "useFocusableInteractive": "error",
+        "useGenericFontNames": "error",
+        "useSemanticElements": "off"
+      },
+
+      "complexity": {
+        // --- JavaScript
+        "noExcessiveCognitiveComplexity": "error",
+        "noForEach": "off",
+        "noUselessStringConcat": "error",
+        "noUselessUndefinedInitialization": "error",
+        "noVoid": "error",
+        "useDateNow": "error",
+        "useSimplifiedLogicExpression": "error"
+      },
+
+      "correctness": {
+        // --- JavaScript
+        "noSwitchDeclarations": "error",
+        "noUndeclaredVariables": "error",
+        "noUnusedFunctionParameters": "error",
+        "noUnusedImports": "error",
+        "noUnusedPrivateClassMembers": "error",
+        "noUnusedVariables": "error",
+        "useArrayLiterals": "error",
+        "useImportExtensions": "off",
+
+        // --- React
+        "useHookAtTopLevel": "error",
+
+        // --- CSS
+        "noInvalidDirectionInLinearGradient": "error",
+        "noInvalidGridAreas": "error",
+        "noInvalidPositionAtImportRule": "error",
+        "noUnknownFunction": "error",
+        "noUnknownMediaFeatureName": "error",
+        "noUnknownProperty": "error",
+        "noUnknownUnit": "error",
+        "noUnmatchableAnbSelector": "error"
+      },
+
+      "nursery": {
+        // --- JavaScript
+        "noCommonJs": "error",
+        "noDuplicateElseIf": "error",
+        "noDynamicNamespaceImportAccess": "error",
+        "noIrregularWhitespace": "error",
+        "noUselessEscapeInRegex": "error",
+        "noValueAtRule": "error",
+        "useAriaPropsSupportedByRole": "error",
+        "useConsistentMemberAccessibility": "error",
+        "useStrictMode": "error",
+        "useTrimStartEnd": "error",
+
+        // --- TypeScript
+        "noEnum": "error",
+        "noRestrictedTypes": "error",
+        "useAdjacentOverloadSignatures": "error",
+
+        // --- CSS
+        "noDuplicateCustomProperties": "error",
+        "noUnknownPseudoElement": "error",
+        "useSortedClasses": {
+          "level": "error",
+          "options": {
+            "functions": ["clsx"]
+          }
+        }
+      },
+
+      "performance": {
+        // --- JavaScript
+        "noAccumulatingSpread": "off",
+        "noBarrelFile": "error",
+        "useTopLevelRegex": "error"
+      },
+
+      "style": {
+        // --- JavaScript
+        "noDoneCallback": "error",
+        "noNegationElse": "error",
+        "noShoutyConstants": "error",
+        "noYodaExpression": "error",
+        "useBlockStatements": "off",
+        "useCollapsedElseIf": "error",
+        "useConsistentBuiltinInstantiation": "error",
+        "useExplicitLengthCheck": "error",
+        "useExportType": "error",
+        "useFilenamingConvention": "off",
+        "useForOf": "error",
+        "useNodeAssertStrict": "error",
+        "useShorthandAssign": "error",
+        "useTemplate": "off",
+        "useThrowNewError": "error",
+        "useThrowOnlyError": "error",
+
+        // --- TypeScript
+        "noNamespace": "error",
+        "noParameterProperties": "error",
+
+        // --- React
+        "noImplicitBoolean": "off"
+      },
+
+      "suspicious": {
+        // --- JavaScript
+        "noConsole": "error",
+        "noEmptyBlockStatements": "error",
+        "noSkippedTests": "error",
+        "useAwait": "error",
+        "useErrorMessage": "error",
+        "useNumberToFixedDigitsArgument": "error",
+
+        // --- TypeScript
+        "noEvolvingTypes": "error",
+        "noMisplacedAssertion": "error",
+
+        // --- CSS
+        "noDuplicateAtImportRules": "error",
+        "noDuplicateFontNames": "error",
+        "noDuplicateSelectorsKeyframeBlock": "error",
+        "noEmptyBlock": "error",
+        "noImportantInKeyframe": "error"
+      }
+    }
+  },
+
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "useEditorconfig": true
+  },
+
+  "css": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+
+  "javascript": {
+    "jsxRuntime": "transparent",
+    "globals": ["describe", "test", "expect", "it"],
+    "formatter": {
+      "arrowParentheses": "asNeeded",
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  }
+}

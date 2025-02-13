@@ -1,0 +1,44 @@
+.Button {
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  border-radius: calc(var(--radius) - 2px);
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: .15s;
+  box-shadow: var(--shadow);
+
+  &:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.Primary {
+    color: hsl(var(--primary-foreground));
+    background-color: hsl(var(--primary));
+  }
+
+  &.Secondary {
+    color: hsl(var(--secondary-foreground));
+    background-color: hsl(var(--secondary));
+  }
+
+  &.FullWidth {
+    width: 100%;
+  }
+}

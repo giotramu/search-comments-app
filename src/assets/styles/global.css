@@ -1,0 +1,62 @@
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: .5rem;
+    --shadow: 0 0 rgba(0, 0, 0, 0.1), 0 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0
+      rgba(0, 0, 0, 0.05);
+    --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px
+      rgba(0, 0, 0, 0.1);
+  }
+}
+
+body {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--background));
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+hr {
+  border: unset;
+  border-bottom: 1px solid hsl(var(--border) / 0.8);
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+
+  @media (min-width: 1024px) {
+    font-size: 3rem;
+    letter-spacing: -.025em;
+    line-height: 1;
+  }
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -.025em;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}

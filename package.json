@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "name": "search-comments-app",
+  "version": "0.1.0",
+  "description": "A simple search comments web-app, built as a technical challenge for a Front-End Developer position at Jobrapido.",
+  "author": {
+    "name": "Giovanni Tramutola",
+    "email": "giotramu@pm.me",
+    "homepage": "https://github.com/giotramu"
+  },
+  "license": "Copyright (c) 2025 Giovanni Tramutola",
+  "type": "module",
+  "engines": {
+    "node": "20.x || 22.x"
+  },
+  "scripts": {
+    "format": "biome format --write",
+    "check:src": "pnpm biome lint ./src",
+    "check:tsc": "tsc --noEmit",
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "test:cov": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@solidjs/testing-library": "0.8.10",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/user-event": "14.6.1",
+    "@vitest/coverage-v8": "3.0.5",
+    "jsdom": "26.0.0",
+    "typescript": "5.7.3",
+    "vite": "6.1.0",
+    "vite-plugin-solid": "2.11.1",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.0.5"
+  },
+  "dependencies": {
+    "@solid-primitives/scheduled": "1.5.0",
+    "solid-js": "1.9.4"
+  }
+}

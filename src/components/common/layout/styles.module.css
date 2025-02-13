@@ -1,0 +1,8 @@
+.Layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 56rem;
+  padding: 4rem;
+}

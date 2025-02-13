@@ -1,0 +1,31 @@
+# Build output
+dist/
+
+# Dependencies
+node_modules/
+
+# Testing
+coverage/
+html/
+
+# Environment variables
+.env
+.env.production
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+
+# JetBrains setting folder
+.idea/
+
+# Package Manager
+.pnpm-store/
