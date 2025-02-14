@@ -2,72 +2,76 @@ import { Button } from '@components/common/button'
 import { Card } from '@components/common/card'
 import { Input } from '@components/common/input'
 import { Layout } from '@components/common/layout'
-import { useQuery } from '@lib/common/hooks/use-query'
-import { isNonEmptyArray, isValidInputValue } from '@lib/common/utils'
-import { MAX_TEXT_LENGTH, MIN_SEARCH_LENGTH } from '@lib/dashboard/constants'
-import type { Posts } from '@lib/dashboard/types'
-import { composeSearchCommentsUrl } from '@lib/dashboard/utils'
-import { type Component, For, type JSX, Show, createSignal } from 'solid-js'
+import type { NonEmptyArray } from '@lib/common/types'
+import { isNonEmptyArray } from '@lib/common/utils'
+import { MAX_TEXT_LENGTH } from '@lib/dashboard/constants'
+import type { Post } from '@lib/dashboard/types'
+import { isValidSearch } from '@lib/dashboard/utils'
+import { type Component, For, Show } from 'solid-js'
+import { useTypeaheadSearch } from './hooks/use-typeahead-search'
+import { SearchHint } from './search-hint'
 import cls from './styles.module.css'
+import { SuggestionsList } from './suggestions-list'
 
 export const Dashboard: Component = () => {
-  const [query, setQuery] = createSignal('')
-
-  const isFormValid = (): boolean =>
-    isValidInputValue(query()) && query().length >= MIN_SEARCH_LENGTH
-
-  const getUrl = (): string | null => {
-    const qParam = query().toLocaleLowerCase().trim()
-
-    return isFormValid() ? composeSearchCommentsUrl(qParam) : null
-  }
-
-  /**
-   * 🔥 Destructuring should be avoided to preserve the Store reactivity.
-   * Ref. https://docs.solidjs.com/advanced-concepts/fine-grained-reactivity
-   */
-  const qPosts = useQuery<Posts>(getUrl, { enabled: isFormValid })
-
-  const handleOnSubmit: JSX.EventHandler<
-    HTMLFormElement,
-    SubmitEvent
-  > = evt => {
-    evt.preventDefault()
-
-    if (isFormValid()) qPosts.refetch()
-  }
-
-  const handleOnInput: JSX.EventHandler<HTMLInputElement, InputEvent> = ({
-    currentTarget: { value }
-  }) => setQuery(value)
+  const {
+    posts,
+    inputValue,
+    handleOnInput,
+    handleOnSubmit,
+    handleSuggestionClick,
+    showSuggestions,
+    openSuggestions,
+    closeSuggestions
+  } = useTypeaheadSearch()
 
   return (
     <Layout>
+      <h1 class={cls.AppTitle}>Search Comments</h1>
+
       <form onSubmit={handleOnSubmit}>
-        <div class={cls.SearchBar}>
-          <Input
-            type="text"
-            id="search_comments"
-            label="Search comments"
-            placeholder="Search comments..."
-            value={query()}
-            onInput={handleOnInput}
-            hasError={!isFormValid()}
-            hint={
-              isFormValid() ? null : (
-                <>
-                  <strong>💡 Tip:</strong> Enter a minimum of{' '}
-                  {MIN_SEARCH_LENGTH} characters.
-                </>
-              )
-            }
-          />
+        <div class={cls.SearchForm}>
+          <div class={cls.SearchBar}>
+            <Input
+              type="text"
+              autocomplete="off"
+              id="search_comments"
+              label="Search comments"
+              placeholder="Search comments..."
+              value={inputValue()}
+              onInput={handleOnInput}
+              onFocus={openSuggestions}
+              onBlur={closeSuggestions}
+              hasError={!isValidSearch(inputValue())}
+              hint={isValidSearch(inputValue()) ? null : <SearchHint />}
+            />
+
+            <Show
+              when={
+                showSuggestions() &&
+                posts.isSuccess &&
+                isNonEmptyArray(posts.data)
+              }
+            >
+              <SuggestionsList
+                selectedIndex={0}
+                suggestions={posts.data as NonEmptyArray<Post>}
+                onSelect={handleSuggestionClick}
+              />
+            </Show>
+          </div>
 
           <div
             class={cls.SearchButton}
-            classList={{ [`${cls.SearchButtonWithMargin}`]: !isFormValid() }}
+            classList={{
+              [`${cls.SearchButtonWithMargin}`]: !isValidSearch(inputValue())
+            }}
           >
-            <Button type="submit" fullWidth disabled={!isFormValid()}>
+            <Button
+              type="submit"
+              fullWidth
+              disabled={!isValidSearch(inputValue())}
+            >
               Search
             </Button>
           </div>
@@ -75,25 +79,25 @@ export const Dashboard: Component = () => {
       </form>
 
       <div class={cls.List}>
-        <Show when={qPosts.isLoading}>
+        <Show when={posts.isLoading}>
           <p class={cls.ListPlaceholder}>
             🔍 Search for comments using your keywords...
           </p>
         </Show>
 
-        <Show when={qPosts.isError}>
+        <Show when={posts.isError}>
           <p class={cls.ListPlaceholder}>
-            An error has occurred: {qPosts.error?.message}.
+            An error has occurred: {posts.error?.message}.
           </p>
         </Show>
 
-        <Show when={qPosts.isSuccess && !isNonEmptyArray(qPosts.data)}>
+        <Show when={posts.isSuccess && !isNonEmptyArray(posts.data)}>
           <p class={cls.ListPlaceholder}>😢 The search returned no results.</p>
         </Show>
 
-        <Show when={qPosts.isSuccess && isNonEmptyArray(qPosts.data)}>
+        <Show when={posts.isSuccess && isNonEmptyArray(posts.data)}>
           <ul class={cls.PostList}>
-            <For each={qPosts.data}>
+            <For each={posts.data}>
               {item => (
                 <li>
                   <Card>

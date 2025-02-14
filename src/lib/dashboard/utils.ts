@@ -1,4 +1,5 @@
-import { API_URL, COMMENTS_LIMIT } from './constants'
+import { isValidInputValue } from '@lib/common/utils'
+import { API_URL, COMMENTS_LIMIT, MIN_SEARCH_LENGTH } from './constants'
 
 export const composeSearchCommentsUrl = (
   query: string,
@@ -10,3 +11,6 @@ export const composeSearchCommentsUrl = (
     ? basePath
     : basePath + `&_limit=${limit}`
 }
+
+export const isValidSearch = (q: string) =>
+  isValidInputValue(q) && q.length >= MIN_SEARCH_LENGTH

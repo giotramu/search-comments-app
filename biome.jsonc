@@ -32,6 +32,7 @@
         "noLabelWithoutControl": "error",
         "useFocusableInteractive": "error",
         "useGenericFontNames": "error",
+        "useKeyWithClickEvents": "off",
         "useSemanticElements": "off"
       },
 

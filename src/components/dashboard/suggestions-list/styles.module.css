@@ -1,0 +1,36 @@
+.SuggestionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px -1px hsl(var(--shadow));
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.Suggestion {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.Suggestion:hover,
+.Selected {
+  background-color: hsl(var(--secondary));
+}
+
+.Title {
+  font-weight: 500;
+  color: hsl(var(--foreground));
+}
+
+.Subtitle {
+  margin-top: 0.25rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  text-transform: lowercase;
+}

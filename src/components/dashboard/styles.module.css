@@ -1,8 +1,18 @@
-.SearchBar {
+.AppTitle {
+  margin-bottom: 3.2rem;
+}
+
+.SearchForm {
   width: 100%;
   display: flex;
   align-items: flex-end;
   gap: 1rem;
+  position: relative;
+}
+
+.SearchBar {
+  position: relative;
+  flex: 1;
 }
 
 .SearchButton {
