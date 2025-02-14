@@ -1,4 +1,3 @@
-
 import type { NonEmptyArray } from '@lib/common/types'
 import type { Post } from '@lib/dashboard/types'
 import { type Component, For } from 'solid-js'

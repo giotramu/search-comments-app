@@ -1,4 +1,3 @@
-
 import { MIN_SEARCH_LENGTH } from '@lib/dashboard/constants'
 import type { Component } from 'solid-js'
 

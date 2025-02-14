@@ -6,7 +6,5 @@ type Props = {
 }
 
 export const Card: Component<Props> = props => (
-  <div class={cls.Card}>
-    {props.children}
-  </div>
+  <div class={cls.Card}>{props.children}</div>
 )
