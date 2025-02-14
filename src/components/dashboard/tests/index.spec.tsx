@@ -27,7 +27,9 @@ describe('<Dashboard />', () => {
 
     expect(screen.getByRole('button', { name: 'Search' })).toBeDisabled()
 
-    expect(screen.getByText('Enter a minimum of 4 characters.')).toBeVisible()
+    expect(
+      screen.getByText('Enter a minimum of 4 characters. e.g. "Omnis dolorem".')
+    ).toBeVisible()
   })
 
   it('should disable button if input is invalid', async () => {

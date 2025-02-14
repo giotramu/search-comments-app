@@ -32,7 +32,7 @@ export const useQuery = <T = unknown>(
       const res = await fetch(url, fetchOptions)
 
       if (!res.ok) {
-        throw new Error(`Error ${res.status}`)
+        throw new Error(`HTTP error: ${res.status} - ${res.statusText}`)
       }
 
       const data = await res.json()
@@ -42,9 +42,12 @@ export const useQuery = <T = unknown>(
         isSuccess: true
       })
     } catch (err) {
+      const error =
+        err instanceof Error ? err : new Error('Unexpected error occurred.')
+
       setState({
         isError: true,
-        error: new Error(`Error ${err}`)
+        error
       })
     } finally {
       setState({
