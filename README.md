@@ -1,6 +1,6 @@
 # Search Comments
 
-Welcome! 🎉 This is a simple search comments web-app, built as a technical challenge for a Front-End Developer position at Jobrapido.com.
+Welcome! 🎉 This is a simple search comments web-app, built as a technical challenge for a Front-End Developer position at [Jobrapido.com](https://jobrapido.com/).
 
 You have two ways to run this project: using a package manager (like pnpm or npm) or with Docker.
 
